@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const commonPartial = require('./webpack/webpack.common');
 const clientPartial = require('./webpack/webpack.client');
 const serverPartial = require('./webpack/webpack.server');
+const primeNgCss = require('./webpack/webpack.primeng');
 const prodPartial = require('./webpack/webpack.prod');
 const { getAotPlugin } = require('./webpack/webpack.aot');
 
@@ -30,6 +31,8 @@ module.exports = function (options, webpackOptions) {
     if (webpackOptions.prod) {
         clientConfig = webpackMerge({}, clientConfig, prodPartial);
     }
+
+    clientConfig = webpackMerge({}, clientConfig, primeNgCss);
 
     const configs = [];
     if (!options.aot) {
