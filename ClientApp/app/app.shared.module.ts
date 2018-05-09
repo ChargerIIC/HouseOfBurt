@@ -4,6 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { FIREBASE_CONFIG } from './app.firebase.config';
+
 //TODO: Remove
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
@@ -41,7 +46,10 @@ import { ApplicationsComponent } from './components/applications/applications.co
 			{ path: 'news', component: NewsComponent },
 			{ path: 'products', component: ProductsComponent },
             { path: '**', redirectTo: 'home' }
-        ])
+		]),
+		AngularFireModule.initializeApp(FIREBASE_CONFIG),
+		AngularFireAuthModule,
+		AngularFireDatabaseModule,
     ]
 })
 export class AppModuleShared {
