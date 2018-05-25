@@ -6,12 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-
-//TODO: Remove
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -21,17 +17,18 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ApplicationsComponent } from './components/applications/applications.component';
 
+import { NewsRepositoryProvider } from './services/news-repository.provider';
+
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
-		FetchDataComponent,
 		NewsComponent,
 		HomeComponent,
 		ContactComponent,
 		ProductsComponent,
-		ApplicationsComponent
+		ApplicationsComponent,
+		NewsRepositoryProvider,
     ],
     imports: [
         CommonModule,
@@ -40,7 +37,6 @@ import { ApplicationsComponent } from './components/applications/applications.co
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-			{ path: 'counter', component: CounterComponent },
 			{ path: 'applications', component: ApplicationsComponent },
 			{ path: 'contact', component: ContactComponent },
 			{ path: 'news', component: NewsComponent },
@@ -50,7 +46,7 @@ import { ApplicationsComponent } from './components/applications/applications.co
 		AngularFireModule.initializeApp(FIREBASE_CONFIG),
 		AngularFireAuthModule,
 		AngularFireDatabaseModule,
-    ]
+	],
 })
 export class AppModuleShared {
 }

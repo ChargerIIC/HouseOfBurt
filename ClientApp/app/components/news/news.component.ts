@@ -1,4 +1,5 @@
 ﻿import { Component } from '@angular/core';
+import { NewsRepositoryProvider } from '../../services/news-repository.provider';
 
 @Component({
 	selector: 'news',
@@ -7,4 +8,10 @@
 })
 
 export class NewsComponent {
+
+	constructor(private newsRepo: NewsRepositoryProvider) {
+
+		console.log(newsRepo.getPagedNews(0, 10));
+
+	}
 }

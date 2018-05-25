@@ -22,10 +22,12 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\app.firebase.config.ts" />
+    <None Remove="ClientApp\app\services\news-repository.provider.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app.firebase.config.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\news-repository.provider.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
